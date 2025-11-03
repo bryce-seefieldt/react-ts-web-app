@@ -10,8 +10,8 @@
     "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
     "format": "prettier --write 'src/**/*.{ts,tsx,css,md,json}'",
     "preview": "vite preview",
-    "test": "vitest",
-    "test:coverage": "vitest run --coverage",
+    "test": "vitest -c ./vitest.config.ts",
+    "test:coverage": "vitest run -c ./vitest.config.ts --coverage",
     "prepare": "husky install"
   },
   "lint-staged": {
