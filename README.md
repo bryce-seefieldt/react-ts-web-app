@@ -5,6 +5,7 @@ A modern React + TypeScript web application built with Vite.
 [![CI](https://github.com/bryce-seefieldt/react-ts-web-app/actions/workflows/ci.yml/badge.svg)](https://github.com/bryce-seefieldt/react-ts-web-app/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/bryce-seefieldt/react-ts-web-app/branch/main/graph/badge.svg)](https://codecov.io/gh/bryce-seefieldt/react-ts-web-app)
 [![Maintainability](https://api.codeclimate.com/v1/badges/YOUR_REPO_ID/maintainability)](https://codeclimate.com/github/bryce-seefieldt/react-ts-web-app)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_SITE_ID/deploy-status)](https://app.netlify.com/sites/YOUR_SITE_NAME/deploys)
 
 ## Features
 
@@ -13,6 +14,7 @@ A modern React + TypeScript web application built with Vite.
 - 🧪 Vitest + React Testing Library
 - 📝 ESLint + Prettier for code quality
 - 🪝 Git hooks with Husky and lint-staged
+- 🚀 Automated deployment to Netlify via GitHub Actions
 
 ## Quick Start
 
@@ -122,6 +124,36 @@ src/
   ├── types/         # TypeScript types/interfaces
   ├── tests/         # Test files
   └── main.tsx       # App entry point
+```
+
+## Deployment
+
+This application is automatically deployed to Netlify via GitHub Actions.
+
+### Automatic Deployment
+
+- **Production**: Pushes to `main` branch trigger automatic deployment
+- **Preview**: Pull requests get preview deployments with unique URLs
+- **CI/CD**: Full test suite runs before deployment
+
+### Setup Netlify Deployment
+
+See [Netlify Setup Guide](./docs/NETLIFY_SETUP.md) for detailed instructions on:
+- Creating a Netlify site
+- Configuring GitHub secrets
+- Custom domain setup
+- Troubleshooting deployment issues
+
+### Manual Deployment
+
+You can also deploy manually:
+
+```bash
+# Build the application
+npm run build
+
+# Deploy using Netlify CLI
+npx netlify-cli deploy --prod --dir=dist
 ```
 
 ## Contributing
