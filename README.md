@@ -126,11 +126,14 @@ src/
 
 ## Contributing
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes (using Conventional Commits)
-4. Push to the branch
-5. Create a Pull Request
+Please see our [Contributing Guidelines](./CONTRIBUTING.md) for detailed information about:
+- Development workflow
+- Test coverage requirements
+- Writing tests
+- Pull request process
+- Code style guidelines
+
+We maintain strict 100% test coverage requirements and have a structured contribution process to ensure high code quality.
 
 ## License
 
