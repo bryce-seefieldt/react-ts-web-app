@@ -60,6 +60,52 @@ npm test
 
 ### Code Quality
 
+#### Testing and Coverage
+
+This project maintains 100% test coverage using Vitest and React Testing Library. Coverage reports are automatically generated and tracked in multiple locations.
+
+**Running Tests Locally:**
+
+```bash
+# Run tests in watch mode
+npm test
+
+# Run tests with coverage report
+npm run test:coverage
+```
+
+**Accessing Coverage Reports:**
+
+1. **Local Development:**
+   - Run `npm run test:coverage`
+   - Reports are generated in the `coverage/` directory (gitignored)
+   - Open `coverage/index.html` in your browser for detailed report
+
+2. **Pull Requests:**
+   - Codecov bot comments on PRs with coverage changes
+   - Inline coverage feedback on changed files
+   - Coverage diff summary automatically added
+
+3. **CI/CD Pipeline:**
+   - Coverage reports uploaded as CI artifacts
+   - Available in GitHub Actions for 14 days
+   - Path: Actions → CI workflow → Artifacts → code-coverage-report
+
+4. **Codecov Dashboard:**
+   - Permanent coverage history at [codecov.io](https://codecov.io/gh/bryce-seefieldt/react-ts-web-app)
+   - Coverage trends and file-by-file analysis
+   - Coverage badge in README shows current status
+
+**Coverage Requirements:**
+- 100% Statements
+- 100% Branches
+- 100% Functions
+- 100% Lines
+
+> Note: Coverage directory is intentionally ignored in git. Reports are generated during CI and available through the channels above.
+
+#### Code Style
+
 - ESLint and Prettier run automatically on commit
 - Tests must pass before merge
 - Follow TypeScript best practices
