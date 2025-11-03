@@ -60,10 +60,53 @@ npm test
 
 ### Code Quality
 
+#### Testing and Coverage
+
+This project maintains 100% test coverage using Vitest and React Testing Library. Coverage reports are automatically generated and uploaded to Codecov.
+
+**Running Tests Locally:**
+
+```bash
+# Run tests in watch mode
+npm test
+
+# Run tests with coverage report
+npm run test:coverage
+
+# View coverage report
+open coverage/index.html
+```
+
+**Coverage Requirements:**
+- 100% Statements
+- 100% Branches
+- 100% Functions
+- 100% Lines
+
+**Setting Up Codecov:**
+
+1. Go to [codecov.io](https://codecov.io)
+2. Sign in with GitHub
+3. Add this repository
+4. Copy the provided token
+5. Add the token as a repository secret:
+   - Go to repo Settings > Secrets and Variables > Actions
+   - Add new repository secret named `CODECOV_TOKEN`
+   - Paste the token value
+
+**Coverage Reports:**
+- PR comments show coverage changes
+- Coverage reports are stored as CI artifacts for 14 days
+- View coverage history and trends at [codecov.io](https://codecov.io/gh/bryce-seefieldt/react-ts-web-app)
+- Coverage badges in README show current status
+
+#### Code Style
+
 - ESLint and Prettier run automatically on commit
 - Tests must pass before merge
 - Follow TypeScript best practices
 - Use React hooks guidelines
+- Use Conventional Commits for commit messages
 
 ## Project Structure
 
@@ -78,13 +121,64 @@ src/
   └── main.tsx       # App entry point
 ```
 
+## Troubleshooting
+
+### Test and Coverage Issues
+
+1. **Coverage Not Meeting 100%:**
+   ```bash
+   # Check which lines need coverage
+   npm run test:coverage
+   
+   # Run tests in watch mode to work on specific files
+   npm test -- --coverage
+   ```
+
+2. **Tests Failing in CI but Passing Locally:**
+   - Ensure all dependencies are installed: `npm ci`
+   - Clear test cache: `npm test -- --clearCache`
+   - Check for environment-specific code
+
+3. **Codecov Integration Issues:**
+   - Verify `CODECOV_TOKEN` is set in repository secrets
+   - Check CI logs for upload errors
+   - Ensure `.codecov.yml` is properly configured
+
+### Common Testing Patterns
+
+1. **Testing Components:**
+   ```tsx
+   import { render, screen, fireEvent } from '@testing-library/react';
+   
+   test('component behavior', () => {
+     render(<YourComponent />);
+     const element = screen.getByRole('button');
+     fireEvent.click(element);
+     expect(screen.getByText(/expected text/i)).toBeInTheDocument();
+   });
+   ```
+
+2. **Testing Hooks:**
+   ```tsx
+   import { renderHook, act } from '@testing-library/react';
+   
+   test('hook behavior', () => {
+     const { result } = renderHook(() => useYourHook());
+     act(() => {
+       result.current.someFunction();
+     });
+     expect(result.current.value).toBe(expectedValue);
+   });
+   ```
+
 ## Contributing
 
 1. Fork the repository
 2. Create your feature branch
-3. Commit your changes (using Conventional Commits)
-4. Push to the branch
-5. Create a Pull Request
+3. Ensure tests pass and maintain 100% coverage
+4. Commit your changes (using Conventional Commits)
+5. Push to the branch
+6. Create a Pull Request
 
 ## License
 
