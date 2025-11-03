@@ -7,11 +7,14 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  test-and-coverage:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch all history for accurate coverage reporting
+    
     - name: Use Node.js
       uses: actions/setup-node@v4
       with:
@@ -24,8 +27,26 @@ jobs:
     - name: Run linter
       run: npm run lint
       
-    - name: Run tests
-      run: npm test
-      
+    - name: Run tests with coverage
+      run: npm run test:coverage
+    
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage/coverage-final.json
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
+        verbose: true
+    
     - name: Build
       run: npm run build
+
+    # Store coverage report as artifact
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v4
+      with:
+        name: code-coverage-report
+        path: coverage/
+        retention-days: 14
