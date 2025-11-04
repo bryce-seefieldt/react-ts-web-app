@@ -86,7 +86,7 @@ jobs:
         fi
     
     - name: Deploy to Netlify (production)
-      uses: netlify/actions/cli@v2
+      uses: netlify/actions/cli@v2.0.0
       with:
         args: deploy --dir=dist --prod
       env:
