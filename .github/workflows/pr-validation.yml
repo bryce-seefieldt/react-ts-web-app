@@ -1,0 +1,92 @@
+name: PR Validation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+jobs:
+  validate-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR title format
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            perf
+            test
+            build
+            ci
+            chore
+            revert
+          requireScope: false
+          subjectPattern: ^(?![A-Z]).+$
+          subjectPatternError: |
+            The subject "{subject}" found in the pull request title "{title}"
+            didn't match the configured pattern. Please ensure that the subject
+            doesn't start with an uppercase character.
+
+      - name: Check branch name
+        run: |
+          BRANCH_NAME="${{ github.head_ref }}"
+          VALID_PREFIXES="^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|hotfix)/"
+          
+          if [[ ! $BRANCH_NAME =~ $VALID_PREFIXES ]]; then
+            echo "❌ Branch name '$BRANCH_NAME' does not follow the required format"
+            echo ""
+            echo "Branch names must start with one of these prefixes:"
+            echo "  - feat/     (new feature)"
+            echo "  - fix/      (bug fix)"
+            echo "  - docs/     (documentation)"
+            echo "  - style/    (formatting, styling)"
+            echo "  - refactor/ (code refactoring)"
+            echo "  - perf/     (performance improvement)"
+            echo "  - test/     (adding tests)"
+            echo "  - build/    (build system changes)"
+            echo "  - ci/       (CI/CD changes)"
+            echo "  - chore/    (maintenance)"
+            echo "  - hotfix/   (emergency fix)"
+            echo ""
+            echo "Example: feat/add-contact-form"
+            exit 1
+          fi
+          
+          echo "✅ Branch name is valid: $BRANCH_NAME"
+
+      - name: Check PR description
+        run: |
+          PR_BODY=$(cat <<'EOF'
+          ${{ github.event.pull_request.body }}
+          EOF
+          )
+          
+          if [ -z "$PR_BODY" ] || [ "$PR_BODY" = "null" ]; then
+            echo "❌ PR description is empty"
+            echo "Please provide a description of your changes"
+            exit 1
+          fi
+          
+          if [ ${#PR_BODY} -lt 20 ]; then
+            echo "❌ PR description is too short (${#PR_BODY} characters)"
+            echo "Please provide a meaningful description (at least 20 characters)"
+            exit 1
+          fi
+          
+          echo "✅ PR description is valid"
+
+      - name: Check for main branch protection
+        if: github.base_ref == 'main'
+        run: |
+          echo "✅ PR is targeting main branch - CI/CD pipeline will run"
+          echo "The following checks must pass before merge:"
+          echo "  - All tests must pass"
+          echo "  - Code coverage must be maintained"
+          echo "  - Linting must pass"
+          echo "  - Build must succeed"
+          echo "  - PR must be approved"

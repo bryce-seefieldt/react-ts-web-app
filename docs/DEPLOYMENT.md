@@ -8,15 +8,31 @@ This project uses **GitHub Actions** to automatically deploy to Netlify. All dep
 
 ### For Production Deployments
 
-1. **Commit your changes to a feature branch:**
+🚨 **Direct pushes to `main` are blocked!** All changes must go through Pull Requests.
+
+1. **Create a feature branch with proper naming:**
    ```bash
+   # Option 1: Use the helper script (recommended)
+   ./scripts/new-branch.sh feat add-new-feature
+   
+   # Option 2: Manual creation
+   git checkout main
+   git pull origin main
    git checkout -b feat/your-feature-name
+   ```
+
+2. **Make changes and commit:**
+   ```bash
    git add .
    git commit -m "feat: your feature description"
+   ```
+
+3. **Push to remote branch:**
+   ```bash
    git push origin feat/your-feature-name
    ```
 
-2. **Create a Pull Request:**
+4. **Create a Pull Request:**
    - Go to GitHub and create a PR from your branch to `main`
    - The CI pipeline will automatically:
      - ✅ Run ESLint

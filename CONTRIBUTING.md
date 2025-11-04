@@ -13,18 +13,53 @@ Thank you for your interest in contributing! This guide will help you understand
 
 ## Development Workflow
 
-1. Fork and clone the repository
-2. Create a feature branch:
+🚨 **IMPORTANT:** Direct pushes to `main` are blocked. All changes must go through Pull Requests.
+
+1. **Fork and clone the repository**
+
+2. **Create a feature branch with proper naming:**
    ```bash
-   git checkout -b feature/your-feature-name
+   # Use the helper script (recommended)
+   ./scripts/new-branch.sh feat your-feature-name
+   
+   # Or manually with proper format: <type>/<description>
+   git checkout -b feat/your-feature-name    # New feature
+   git checkout -b fix/bug-description       # Bug fix
+   git checkout -b docs/update-readme        # Documentation
+   git checkout -b test/add-coverage         # Tests
    ```
-3. Install dependencies:
+   
+   **Valid branch types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `hotfix`
+
+3. **Install dependencies:**
    ```bash
    npm install
    ```
-4. Make your changes, following our [code style](#code-style) guidelines
-5. Add tests and ensure 100% coverage
-6. Create a pull request
+
+4. **Make your changes**, following our [code style](#code-style) guidelines
+
+5. **Add tests and ensure 100% coverage**
+   ```bash
+   npm run test:coverage
+   ```
+
+6. **Commit using conventional commits:**
+   ```bash
+   git commit -m "feat: add new feature"
+   git commit -m "fix: resolve issue"
+   ```
+
+7. **Push to your branch:**
+   ```bash
+   git push origin feat/your-feature-name
+   ```
+
+8. **Create a Pull Request:**
+   - Use the PR template
+   - Ensure all CI checks pass
+   - Request review if needed
+
+**See [Branch Protection Guide](.github/BRANCH_PROTECTION.md) for enforcement details.**
 
 ## Test Coverage Requirements
 
