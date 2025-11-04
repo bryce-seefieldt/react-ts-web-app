@@ -128,33 +128,46 @@ src/
 
 ## Deployment
 
-This application is automatically deployed to Netlify via GitHub Actions.
+🚀 This application is **automatically deployed to Netlify via GitHub Actions CI/CD pipeline**.
 
-### Automatic Deployment
+### CI/CD Pipeline (Recommended)
 
-- **Production**: Pushes to `main` branch trigger automatic deployment
-- **Preview**: Pull requests get preview deployments with unique URLs
-- **CI/CD**: Full test suite runs before deployment
+**All deployments should go through the automated pipeline:**
 
-### Setup Netlify Deployment
+1. Create a feature branch and push changes
+2. Create a Pull Request to `main`
+3. CI runs tests, linting, and builds
+4. Once merged, automatic deployment to production
 
-See [Netlify Setup Guide](./docs/NETLIFY_SETUP.md) for detailed instructions on:
-- Creating a Netlify site
-- Configuring GitHub secrets
-- Custom domain setup
-- Troubleshooting deployment issues
+**Pipeline Steps:**
+- ✅ Lint code
+- ✅ Run all tests with coverage
+- ✅ Build production bundle
+- ✅ Deploy to Netlify
+- ✅ Report deployment status
 
-### Manual Deployment
+### Documentation
 
-You can also deploy manually:
+- **[Deployment Guide](./docs/DEPLOYMENT.md)** - Complete CI/CD workflow and best practices
+- **[Netlify Setup Guide](./docs/NETLIFY_SETUP.md)** - Initial Netlify configuration
+- **[Contact Form Setup](./docs/CONTACT_FORM_SETUP.md)** - Form submission configuration
+
+### Production Site
+
+- **Live Site:** https://seven30.com
+- **Admin Dashboard:** https://app.netlify.com/projects/seven30com
+- **GitHub Actions:** https://github.com/bryce-seefieldt/react-ts-web-app/actions
+
+### Emergency Manual Deployment
+
+⚠️ **Only use in emergencies when CI/CD is unavailable:**
 
 ```bash
-# Build the application
 npm run build
-
-# Deploy using Netlify CLI
-npx netlify-cli deploy --prod --dir=dist
+netlify deploy --prod --dir=dist
 ```
+
+> **Note:** Manual deployments bypass quality checks. Always prefer the CI/CD pipeline.
 
 ## Contributing
 
