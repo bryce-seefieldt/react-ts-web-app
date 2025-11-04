@@ -17,7 +17,7 @@ const Footer = () => {
             <p className="footer-tagline">Elevating artistry, empowering creators</p>
           </div>
 
-          <div className="footer-links">
+          {/* <div className="footer-links">
             <div className="footer-column">
               <h4>Services</h4>
               <ul>
@@ -62,11 +62,11 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} Seven30. All rights reserved.</p>
+          <p>&copy; {currentYear} Seven:30 Entertainment. All rights reserved.</p>
           <div className="footer-legal">
             <a href="#privacy">Privacy Policy</a>
             <span>•</span>

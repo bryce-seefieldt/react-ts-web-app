@@ -25,7 +25,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="stats">
+          {/* <div className="stats">
             <div className="stat-item">
               <div className="stat-number">10+</div>
               <div className="stat-label">Years Experience</div>
@@ -38,7 +38,7 @@ const About = () => {
               <div className="stat-number">100%</div>
               <div className="stat-label">Dedicated</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
