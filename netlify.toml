@@ -12,10 +12,6 @@
   # Node version
   NODE_VERSION = "20"
 
-# Form submission event handler
-[[plugins]]
-  package = "@netlify/plugin-functions"
-
 # Redirect rules for SPA
 [[redirects]]
   from = "/*"
