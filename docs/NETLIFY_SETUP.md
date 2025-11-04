@@ -62,35 +62,29 @@ netlify login
 
 ### 4. Deploy
 
-Once you've added the secrets:
+Once you've added the secrets, deployments are controlled by CI:
 
-1. Push to the `main` branch:
-   ```bash
-   git push origin main
-   ```
+- Pull Requests and pushes to `main` run checks only (no production deploy).
+- Pushing a tag like `v1.2.3` runs checks and deploys to production using Netlify CLI `--prod`.
 
-2. GitHub Actions will automatically:
-   - Run tests and coverage checks
-   - Build the application
-   - Deploy to Netlify (only on main branch)
-
-3. Check the deployment:
-   - View the Actions tab in GitHub for deployment status
-   - Check Netlify dashboard for the live site
-   - Your site will be available at: `https://your-site-name.netlify.app`
+To release to production:
+```bash
+git checkout main && git pull --ff-only
+npm version patch -m "chore(release): v%s"
+git push origin main --follow-tags
+```
+CI will verify the tag points to `main` and deploy to production.
 
 ## Deployment Behavior
 
-### Main Branch (Production)
-- **Trigger**: Push to `main` branch
-- **Behavior**: Full test → build → deploy to production
-- **URL**: Your custom domain or `https://your-site-name.netlify.app`
+### Production (Tags)
+- **Trigger**: Push a tag matching `v*` (e.g., `v1.2.3`)
+- **Behavior**: Full test → build → Netlify CLI deploy with `--prod`
+- **Safety**: CI verifies the tag commit is an ancestor of `main`
 
-### Pull Requests (Preview)
-- **Trigger**: PR opened/updated
-- **Behavior**: Full test → build → deploy preview (with PR comment)
-- **URL**: Unique preview URL for each PR
-- **Comment**: Netlify bot will comment on PR with preview link
+### Pull Requests (Checks Only)
+- **Trigger**: PR opened/updated to `main`
+- **Behavior**: Full test → build → no deploy
 
 ## Configuration
 

@@ -2,58 +2,31 @@
 
 ## Automated CI/CD Pipeline ✅
 
-This project uses **GitHub Actions** to automatically deploy to Netlify. All deployments should go through this pipeline to ensure consistency and quality.
+This project uses **GitHub Actions** with a tags-only production deployment model.
 
-## How to Deploy
+## Triggers and Behavior
 
-### For Production Deployments
+- Pull Requests to `main`:
+   - Run lint, tests (100% coverage), build.
+   - No production deploy.
 
-🚨 **Direct pushes to `main` are blocked!** All changes must go through Pull Requests.
+- Push to `main`:
+   - Run lint, tests, build.
+   - No production deploy.
 
-1. **Create a feature branch with proper naming:**
-   ```bash
-   # Option 1: Use the helper script (recommended)
-   ./scripts/new-branch.sh feat add-new-feature
-   
-   # Option 2: Manual creation
-   git checkout main
-   git pull origin main
-   git checkout -b feat/your-feature-name
-   ```
+- Push a tag matching `v*` (e.g., `v1.2.3`):
+   - Run lint, tests, build.
+   - Verify tag commit is an ancestor of `main` (safety guard).
+   - Deploy `dist/` to Netlify production using Netlify CLI `--prod`.
 
-2. **Make changes and commit:**
-   ```bash
-   git add .
-   git commit -m "feat: your feature description"
-   ```
-
-3. **Push to remote branch:**
-   ```bash
-   git push origin feat/your-feature-name
-   ```
-
-4. **Create a Pull Request:**
-   - Go to GitHub and create a PR from your branch to `main`
-   - The CI pipeline will automatically:
-     - ✅ Run ESLint
-     - ✅ Run all tests with coverage
-     - ✅ Upload coverage to Codecov
-     - ✅ Build the production bundle
-
-3. **Merge to Main:**
-   - Once PR is approved and CI passes, merge to `main`
-   - The deploy job will automatically trigger:
-     - ✅ Downloads the build artifact
-     - ✅ Deploys to Netlify production
-     - ✅ Posts deployment status to GitHub
-
-### CI/CD Pipeline Steps
+### Visual Flow
 
 ```
-Push to main → Run Tests → Build → Deploy to Netlify
-     ↓            ↓          ↓           ↓
-  Trigger      Lint +    Create      Upload to
-  Actions    Coverage   Artifact    seven30.com
+PR → CI (lint/tests/build) ──┐
+                                           ├─ No production deploy
+main push → CI (lint/tests/build) ─┘
+
+tag v* push → CI (lint/tests/build) → Verify tag on main → Netlify deploy --prod
 ```
 
 ## GitHub Secrets Required
@@ -107,12 +80,12 @@ If a deployment causes issues:
 3. Find the last working deployment
 4. Click "Publish deploy" to rollback
 
-Or revert the commit and push:
+Or revert by creating and pushing a previous tag, or revert the commit and push:
 
 ```bash
 git revert HEAD
 git push origin main
-# CI/CD will automatically deploy the reverted version
+# Then bump a new tag and push it to trigger a production deploy
 ```
 
 ## Best Practices
@@ -129,6 +102,22 @@ git push origin main
 - Push directly to `main` without PR review
 - Skip tests or linting
 - Deploy with failing tests
+
+## Release Process (Tags)
+
+1) Ensure `main` is green and up to date
+```bash
+git checkout main && git pull --ff-only
+```
+
+2) Bump version and create an annotated tag
+```bash
+# Example: patch
+npm version patch -m "chore(release): v%s"
+git push origin main --follow-tags
+```
+
+3) Verify CI run for `refs/tags/vX.Y.Z` completes, then confirm Netlify production is updated.
 
 ## Troubleshooting
 

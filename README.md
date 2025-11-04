@@ -162,23 +162,41 @@ src/
 
 ## Deployment
 
-🚀 This application is **automatically deployed to Netlify via GitHub Actions CI/CD pipeline**.
+🚀 This app uses GitHub Actions to deploy to Netlify. Production deploys are triggered by tags only.
 
-### CI/CD Pipeline (Recommended)
+### CI/CD Overview
 
-**All deployments should go through the automated pipeline:**
+- Pull Requests → CI runs lint, tests (with 100% coverage), and build. No deploy.
+- Push to `main` → CI runs checks. No deploy.
+- Push a version tag `v*` (e.g., `v1.2.3`) → CI runs checks and deploys to Netlify production.
 
-1. Create a feature branch and push changes
-2. Create a Pull Request to `main`
-3. CI runs tests, linting, and builds
-4. Once merged, automatic deployment to production
+### Releasing (Production Deploy)
 
-**Pipeline Steps:**
-- ✅ Lint code
-- ✅ Run all tests with coverage
-- ✅ Build production bundle
-- ✅ Deploy to Netlify
-- ✅ Report deployment status
+1) Ensure `main` is up to date and green
+```bash
+git checkout main
+git pull --ff-only
+```
+
+2) Bump version and create a tag (choose one)
+```bash
+# Patch
+npm version patch -m "chore(release): v%s"
+
+# Minor
+npm version minor -m "chore(release): v%s"
+
+# Major
+npm version major -m "chore(release): v%s"
+```
+
+3) Push the commit and tag
+```bash
+git push origin main --follow-tags
+# or push tag explicitly: git push origin vX.Y.Z
+```
+
+CI will verify the tag points to `main`, then deploy with Netlify CLI `--prod`.
 
 ### Documentation
 
