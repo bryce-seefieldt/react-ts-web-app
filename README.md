@@ -47,18 +47,52 @@ npm test
 
 ### Git Workflow
 
-1. Create a feature branch:
+🚨 **IMPORTANT:** Direct pushes to `main` branch are blocked. All changes must go through Pull Requests.
+
+1. **Create a feature branch with proper naming:**
    ```bash
-   git checkout -b feature/your-feature-name
+   # Branch name format: <type>/<description>
+   git checkout -b feat/add-new-feature      # New feature
+   git checkout -b fix/resolve-bug           # Bug fix
+   git checkout -b docs/update-readme        # Documentation
+   git checkout -b refactor/improve-code     # Code refactoring
+   git checkout -b test/add-coverage         # Test additions
+   git checkout -b chore/update-deps         # Maintenance
+   git checkout -b hotfix/critical-fix       # Emergency fix
    ```
 
-2. Make changes and commit using conventional commits:
+2. **Make changes and commit using conventional commits:**
    ```bash
+   git add .
    git commit -m "feat: add new feature"
    git commit -m "fix: resolve bug"
+   git commit -m "docs: update documentation"
    ```
 
-3. Push changes and create a pull request
+3. **Push to remote branch:**
+   ```bash
+   git push origin feat/add-new-feature
+   ```
+
+4. **Create a Pull Request:**
+   - Go to GitHub and create a PR from your branch to `main`
+   - Fill out the PR template with description of changes
+   - CI will automatically run tests, linting, and coverage
+   - Request review if needed
+
+5. **Wait for CI to pass:**
+   - ✅ PR validation (branch name, description)
+   - ✅ Linting
+   - ✅ Tests with coverage
+   - ✅ Build
+   - ✅ Approvals (if required)
+
+6. **Merge via Pull Request:**
+   - Click "Merge pull request" once all checks pass
+   - Delete the feature branch after merge
+   - Deployment to production happens automatically
+
+**See [Branch Protection Guide](.github/BRANCH_PROTECTION.md) for details on enforced rules.**
 
 ### Code Quality
 
