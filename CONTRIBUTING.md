@@ -61,6 +61,30 @@ Thank you for your interest in contributing! This guide will help you understand
 
 **See [Branch Protection Guide](.github/BRANCH_PROTECTION.md) for enforcement details.**
 
+## Release Process (Production Deploys)
+
+Production deploys are triggered by pushing a version tag (`v*`). Tags must point to a commit on `main`.
+
+1) Ensure `main` is up to date and CI is green
+```bash
+git checkout main && git pull --ff-only
+```
+
+2) Bump the version and create a tag (choose one)
+```bash
+# Patch/minor/major
+npm version patch -m "chore(release): v%s"
+npm version minor -m "chore(release): v%s"
+npm version major -m "chore(release): v%s"
+```
+
+3) Push the commit and tag
+```bash
+git push origin main --follow-tags
+```
+
+CI will verify the tag is based on `main`, run lint/tests/build, and deploy to Netlify production.
+
 ## Test Coverage Requirements
 
 ### Coverage Thresholds
