@@ -4,10 +4,17 @@
   
   # Directory that contains the deploy-ready HTML files and assets
   publish = "dist"
+  
+  # Functions directory
+  functions = "netlify/functions"
 
 [build.environment]
   # Node version
   NODE_VERSION = "20"
+
+# Form submission event handler
+[[plugins]]
+  package = "@netlify/plugin-functions"
 
 # Redirect rules for SPA
 [[redirects]]
