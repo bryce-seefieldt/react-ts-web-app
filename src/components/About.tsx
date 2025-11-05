@@ -39,16 +39,16 @@ const About = () => {
             </p>
             <div className="about-highlight-cards">
               <div className="about-card">
-                <div className="about-card-title">Notable Clients</div>
+                <div className="about-card-title">Artist Clients</div>
                 <div className="about-card-list">
-                  Marco Polo, Shawn Desman, Kira Isabella, Neverest
+                  MorMor, Vera Sola, Marco Polo, Shawn Desman, Neverest, Kira Isabella
                 </div>
               </div>
               <div className="about-card">
-                <div className="about-card-title">Major Partnerships</div>
+                <div className="about-card-title">Brand Clients</div>
                 <div className="about-card-list">
-                  VicPark Group, Rawkus Records, Red Bull Music Academy, Offshoot Communications,
-                  CKLN 88.1FM, AOL Canada
+                  Don't Guess Records, VicPark Group, Rawkus Records, Red Bull Music Academy,
+                  Offshoot Communications, CKLN 88.1FM, AOL Canada
                 </div>
               </div>
             </div>
@@ -68,7 +68,7 @@ const About = () => {
               <div className="about-founder-companies">
                 <strong>Key Roles:</strong>
                 <ul>
-                  <li>Warner/Chappell Music Publishing</li>
+                  <li>Warner Chappell Music Publishing</li>
                   <li>Fat Beats Records (NYC)</li>
                   <li>Hydra Records & Mirror Image Recorders (NYC)</li>
                 </ul>
@@ -82,7 +82,7 @@ const About = () => {
               <div className="about-card">
                 <div className="about-card-title">Industry Experience</div>
                 <div className="about-card-list">
-                  Publishing, A&R, Engineering, Event Production, Marketing
+                  Marketing, Publishing, A&R, Engineering, Event Production
                 </div>
               </div>
             </div>
