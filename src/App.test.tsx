@@ -68,31 +68,31 @@ describe('App', () => {
 
       // "Our Services" appears in hero CTA and services section, use role to be specific
       expect(screen.getByRole('heading', { name: /Our Services/i })).toBeInTheDocument();
+      // Updated subtitle text
       expect(
-        screen.getByText(/Tailored solutions to amplify your creative vision/i),
+        screen.getByText(/Seven:30 Entertainment offers a wide spectrum of services/i),
       ).toBeInTheDocument();
     });
 
     it('renders all 6 service cards', () => {
       render(<App />);
 
-      // Use getAllByText since these appear in both services section and footer
-      expect(screen.getAllByText(/Artist Management/i).length).toBeGreaterThan(0);
-      expect(screen.getAllByText(/Brand Development/i).length).toBeGreaterThan(0);
-      expect(screen.getAllByText(/Strategic Consulting/i).length).toBeGreaterThan(0);
-      expect(screen.getByText(/Partnership & Deals/i)).toBeInTheDocument();
-      expect(screen.getByText(/Digital Presence/i)).toBeInTheDocument();
-      expect(screen.getByText(/Career Development/i)).toBeInTheDocument();
+      // Updated services list
+      expect(screen.getByText(/Creative Development & A&R/i)).toBeInTheDocument();
+      expect(screen.getByText(/Project & Release Management/i)).toBeInTheDocument();
+      expect(screen.getByText(/Brand Strategy & Marketing Campaigns/i)).toBeInTheDocument();
+      expect(screen.getByText(/Tour Management & Production Coordination/i)).toBeInTheDocument();
+      expect(screen.getByText(/Music Publishing Support & Licensing/i)).toBeInTheDocument();
+      expect(screen.getByText(/Event Programming & Promotion/i)).toBeInTheDocument();
     });
 
     it('renders service descriptions', () => {
       render(<App />);
 
+      // Spot-check a couple of updated description phrases
+      expect(screen.getByText(/songwriting, production, and career guidance/i)).toBeInTheDocument();
       expect(
-        screen.getByText(/Comprehensive career guidance, strategic planning/i),
-      ).toBeInTheDocument();
-      expect(
-        screen.getByText(/Craft a compelling brand identity that resonates/i),
+        screen.getByText(/branding, marketing, and promotional services/i),
       ).toBeInTheDocument();
     });
   });
@@ -101,16 +101,17 @@ describe('App', () => {
     it('renders about heading', () => {
       render(<App />);
 
-      expect(screen.getByText(/About Seven30/i)).toBeInTheDocument();
+      // New hero title in About (use role to disambiguate)
+      expect(screen.getByRole('heading', { name: /Seven:30 Entertainment/i })).toBeInTheDocument();
     });
 
     it('renders about content', () => {
       render(<App />);
 
+      expect(screen.getByText(/Founded in 1999 in Toronto/i)).toBeInTheDocument();
       expect(
-        screen.getByText(/boutique artist management and consulting firm/i),
+        screen.getByText(/Empowering Artists\. Shaping Culture\. Delivering Results\./i),
       ).toBeInTheDocument();
-      expect(screen.getByText(/elevate artistry, empower creators/i)).toBeInTheDocument();
     });
 
     // it('renders statistics', () => {
