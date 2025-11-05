@@ -76,6 +76,12 @@
   transition: transform 0.4s ease;
 }
 
+.service-icon img {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
+
 .service-card:hover .service-icon {
   transform: scale(1.1) rotate(5deg);
 }

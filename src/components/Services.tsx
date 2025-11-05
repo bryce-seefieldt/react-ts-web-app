@@ -4,7 +4,9 @@ import './Services.css';
 interface Service {
   title: string;
   description: string;
-  icon: string;
+  icon?: string; // emoji fallback
+  iconImg?: string; // path under public/
+  iconAlt?: string;
   color: string;
 }
 
@@ -13,7 +15,8 @@ const services: Service[] = [
     title: 'Creative Development & A&R',
     description:
       'Hands-on support for artists and creators, including songwriting, production, and career guidance. We help shape your creative vision and connect you with the right collaborators to maximize your potential.',
-    icon: '�',
+    iconImg: '/icons/creative-dev.svg',
+    iconAlt: 'Creative Development & A&R',
     color: '#9dd44f',
   },
   {
@@ -27,7 +30,8 @@ const services: Service[] = [
     title: 'Brand Strategy & Marketing Campaigns',
     description:
       'Comprehensive branding, marketing, and promotional services to build your audience and drive engagement. We create campaigns that resonate and deliver measurable results.',
-    icon: '�',
+    iconImg: '/icons/brand-marketing.svg',
+    iconAlt: 'Brand Strategy & Marketing',
     color: '#9dd44f',
   },
   {
@@ -50,13 +54,6 @@ const services: Service[] = [
       'Curating, producing, and promoting live events, showcases, and cultural experiences. We bring together talent, audiences, and brands for unforgettable moments.',
     icon: '🎟️',
     color: '#133337',
-  },
-  {
-    title: 'Media Content & Editorial Services',
-    description:
-      'Expert editorial, content creation, and media strategy for blogs, publications, and digital platforms. We help you tell your story and amplify your message.',
-    icon: '�',
-    color: '#9dd44f',
   },
 ];
 
@@ -82,7 +79,13 @@ const Services = () => {
               className="service-card"
               style={{ '--accent-color': service.color } as React.CSSProperties}
             >
-              <div className="service-icon">{service.icon}</div>
+              <div className="service-icon">
+                {service.iconImg ? (
+                  <img src={service.iconImg} alt={service.iconAlt || service.title} />
+                ) : (
+                  service.icon
+                )}
+              </div>
               <h3 className="service-title">{service.title}</h3>
               <p className="service-description">{service.description}</p>
             </div>

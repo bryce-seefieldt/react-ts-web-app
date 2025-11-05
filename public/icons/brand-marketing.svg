@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <style>
+      .s{stroke:#133337;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none}
+      .a{fill:#9dd44f}
+    </style>
+  </defs>
+  <!-- bullseye + arrow to represent Brand Strategy & Marketing -->
+  <circle class="s" cx="32" cy="32" r="18"/>
+  <circle class="s" cx="32" cy="32" r="12"/>
+  <circle class="a" cx="32" cy="32" r="4"/>
+  <!-- arrow -->
+  <path class="s" d="M18 18l10 10"/>
+  <path class="s" d="M40 12l12 12"/>
+  <path class="s" d="M46 10l8 8"/>
+  <path class="s" d="M32 32l16-16"/>
+</svg>
