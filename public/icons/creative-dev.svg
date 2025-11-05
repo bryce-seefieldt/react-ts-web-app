@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <style>
+      .s{stroke:#133337;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none}
+      .f{fill:#9dd44f}
+    </style>
+  </defs>
+  <!-- pencil + music note to represent Creative Development & A&R -->
+  <path class="s" d="M10 50l8-2 26-26a4 4 0 0 0 0-6 4 4 0 0 0-6 0L12 42l-2 8z"/>
+  <path class="s" d="M41 17l6 6"/>
+  <circle class="f" cx="14" cy="46" r="2"/>
+  <!-- music note -->
+  <path class="s" d="M44 28v-8l10-3v8"/>
+  <circle class="s" cx="44" cy="34" r="4"/>
+  <circle class="s" cx="54" cy="30" r="3"/>
+</svg>
