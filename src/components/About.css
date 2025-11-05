@@ -95,3 +95,99 @@
     font-size: 2.5rem;
   }
 }
+
+/* New layout styles */
+.about-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.about-hero-title {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem 0;
+}
+
+.about-hero-tagline {
+  color: #a9a6a6;
+  font-size: 1.1rem;
+}
+
+.about-hero-underline {
+  width: 120px;
+  height: 4px;
+  background: #9dd44f;
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+.about-columns {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+}
+
+.about-section-heading {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 0.75rem 0;
+  color: #fff;
+}
+
+.about-highlight-cards,
+.about-right-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.about-card {
+  background: rgba(19, 51, 55, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.about-card-title {
+  color: #9dd44f;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.about-card-list {
+  color: #a9a6a6;
+  font-size: 0.95rem;
+}
+
+.about-founder-name {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.about-founder-role {
+  color: #a9a6a6;
+  margin-bottom: 0.75rem;
+}
+
+.about-founder-credentials {
+  padding-left: 1.2rem;
+  margin: 0 0 1rem 0;
+  color: #a9a6a6;
+}
+
+.about-founder-companies ul {
+  padding-left: 1.2rem;
+  margin: 0.25rem 0 0 0;
+  color: #a9a6a6;
+}
+
+@media (max-width: 960px) {
+  .about-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .about-highlight-cards,
+  .about-right-cards {
+    grid-template-columns: 1fr;
+  }
+}

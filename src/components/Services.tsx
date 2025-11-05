@@ -10,46 +10,53 @@ interface Service {
 
 const services: Service[] = [
   {
-    title: 'Artist Management',
+    title: 'Creative Development & A&R',
     description:
-      'Comprehensive career guidance, strategic planning, and day-to-day management to elevate your artistic journey.',
-    icon: '🎭',
+      'Hands-on support for artists and creators, including songwriting, production, and career guidance. We help shape your creative vision and connect you with the right collaborators to maximize your potential.',
+    icon: '�',
     color: '#9dd44f',
   },
   {
-    title: 'Brand Development',
+    title: 'Project & Release Management',
     description:
-      'Craft a compelling brand identity that resonates with your audience and stands out in the industry.',
-    icon: '✨',
+      'Strategic planning and execution for music, media, and entertainment projects. From concept to launch, we oversee timelines, budgets, and deliverables to ensure successful releases.',
+    icon: '📅',
     color: '#133337',
   },
   {
-    title: 'Strategic Consulting',
+    title: 'Brand Strategy & Marketing Campaigns',
     description:
-      'Expert insights on market positioning, growth strategies, and navigating the evolving creative landscape.',
-    icon: '📊',
+      'Comprehensive branding, marketing, and promotional services to build your audience and drive engagement. We create campaigns that resonate and deliver measurable results.',
+    icon: '�',
     color: '#9dd44f',
   },
   {
-    title: 'Partnership & Deals',
+    title: 'Tour Management & Production Coordination',
     description:
-      'Negotiate partnerships, sponsorships, and collaborations that align with your artistic vision and goals.',
-    icon: '🤝',
+      'Expert management of tours, live events, and production logistics. We handle everything from booking and routing to technical coordination and on-site support.',
+    icon: '🎤',
     color: '#133337',
   },
   {
-    title: 'Digital Presence',
+    title: 'Music Publishing Support & Licensing',
     description:
-      'Build and optimize your online presence across platforms to maximize reach and engagement.',
-    icon: '🌐',
+      'Guidance on publishing administration, rights management, and licensing for artists, songwriters, and producers. We help you protect and monetize your creative works.',
+    icon: '📝',
     color: '#9dd44f',
   },
   {
-    title: 'Career Development',
+    title: 'Event Programming & Promotion',
     description:
-      'Long-term planning and milestone strategies to build a sustainable and thriving artistic career.',
-    icon: '🚀',
+      'Curating, producing, and promoting live events, showcases, and cultural experiences. We bring together talent, audiences, and brands for unforgettable moments.',
+    icon: '🎟️',
     color: '#133337',
+  },
+  {
+    title: 'Media Content & Editorial Services',
+    description:
+      'Expert editorial, content creation, and media strategy for blogs, publications, and digital platforms. We help you tell your story and amplify your message.',
+    icon: '�',
+    color: '#9dd44f',
   },
 ];
 
@@ -60,7 +67,11 @@ const Services = () => {
         <div className="services-header">
           <h2 className="section-title">Our Services</h2>
           <p className="section-subtitle">
-            Tailored solutions to amplify your creative vision and business success
+            Seven:30 Entertainment offers a wide spectrum of services designed to support artists,
+            brands, and organizations throughout the creative and commercial lifecycle. Whether
+            working with independent artists or partnering with global brands, Seven:30 delivers
+            bespoke solutions that are rooted in experience, built on relationships, and executed
+            with precision.
           </p>
         </div>
 
