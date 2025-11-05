@@ -16,7 +16,6 @@ const services: Service[] = [
     description:
       'Hands-on support for artists and creators, including songwriting, production, and career guidance. We help shape your creative vision and connect you with the right collaborators to maximize your potential.',
     iconImg: '/icons/creative-dev.svg',
-    iconAlt: 'Creative Development & A&R',
     color: '#9dd44f',
   },
   {
